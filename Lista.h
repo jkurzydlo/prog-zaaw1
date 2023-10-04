@@ -10,7 +10,7 @@ public:
 
     ~Lista()
     {
-        Wezel* tmp = nullptr;
+        Wezel *tmp = nullptr;
         while (poczatek != nullptr)
         {
             tmp = poczatek;
@@ -22,8 +22,8 @@ public:
 
     void wstawNaPoczatek(int val)
     {
-        Wezel* nowy_wezel = new Wezel(val);
-        Wezel* tmp = poczatek;
+        Wezel *nowy_wezel = new Wezel(val);
+        Wezel *tmp = poczatek;
 
         if (poczatek == nullptr)
         {
@@ -38,15 +38,25 @@ public:
         }
     }
 
-    void wyswietl(){
-        Wezel* tmp = poczatek;
-        std::cout<<"\nElementy listy:";
+    void wstawNaKoniec(int val)
+    {
+        Wezel *nowy_wezel = new Wezel(val);
+        if (koniec->nastepny == nullptr)
+        {
+            koniec->nastepny = nowy_wezel;
+            koniec = nowy_wezel;
+        }
+    }
+
+    void wyswietl()
+    {
+        Wezel *tmp = poczatek;
+        std::cout << "\nElementy listy:";
 
         while (poczatek != nullptr)
         {
-            std::cout<<tmp->zawartosc<<" ";
-            tmp= tmp->nastepny;
+            std::cout << tmp->zawartosc << " ";
+            tmp = tmp->nastepny;
         }
-        
     }
 };
