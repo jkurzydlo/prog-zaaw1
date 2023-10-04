@@ -6,5 +6,6 @@ int main(){
     lista.wstawNaPoczatek(6);
     lista.wstawNaPoczatek(7);
     lista.wstawNaKoniec(10);
+    lista.wstawNa(2,4);
     lista.wyswietl();
 }

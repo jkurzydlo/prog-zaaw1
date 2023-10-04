@@ -59,4 +59,26 @@ public:
             tmp = tmp->nastepny;
         }
     }
+
+    void wstawNa(int indeks, int val){
+        Wezel* nowy = new Wezel(val);
+
+        if(indeks == 0){
+          wstawNaPoczatek(val);
+        }else{
+            Wezel* tmp = poczatek;
+            
+            for(int i =1;i<indeks -1;i++){
+                tmp = tmp->nastepny;
+            }
+
+            if(tmp!=nullptr){
+                nowy->nastepny = tmp->nastepny;
+                nowy->poprzedni = tmp;
+                tmp->nastepny = nowy;
+
+                if(nowy->nastepny != nullptr) nowy->nastepny->poprzedni = nowy;
+            }
+        }
+    }
 };
