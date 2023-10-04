@@ -1,7 +1,7 @@
 class Wezel{
 
-int zawartosc;
 public:
+int zawartosc;
 Wezel* poprzedni;
 Wezel* nastepny;
 
