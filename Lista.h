@@ -38,8 +38,7 @@ public:
         }
     }
 
-    void wstawNaKoniec(int val)
-    {
+    void wstawNaKoniec(int val){
         Wezel *nowy_wezel = new Wezel(val);
         if (koniec->nastepny == nullptr)
         {
@@ -48,8 +47,7 @@ public:
         }
     }
 
-    void wyswietl()
-    {
+    void wyswietl(){
         Wezel *tmp = poczatek;
         std::cout << "\nElementy listy:";
 
@@ -58,6 +56,61 @@ public:
             std::cout << tmp->zawartosc << " ";
             tmp = tmp->nastepny;
         }
+    }
+
+    void wyswietlOdwrocona(){
+        Wezel *tmp = koniec;
+        std::cout << "\nElementy listy:";
+
+
+        while (tmp != nullptr)
+        {
+            std::cout << tmp->zawartosc << " ";
+            tmp = tmp->poprzedni;
+        }
+        std::cout<<tmp->zawartosc;
+
+        }
+
+    void usunZPozycji(int indeks){
+        Wezel* tmp = poczatek;
+
+           for(int i = 1; i < indeks-1; i++) {
+            if(tmp != nullptr) tmp = tmp->nastepny;
+
+        if(tmp != nullptr && tmp->nastepny != nullptr){
+            Wezel* do_usuniecia = tmp->nastepny;
+            tmp->nastepny = tmp->nastepny->nastepny;
+            if(tmp->nastepny->nastepny != nullptr)
+                tmp->nastepny->nastepny->poprzedni = tmp->nastepny;
+                delete do_usuniecia;
+        }
+
+      
+    }
+
+    }
+
+    void usunZKonca(){
+        Wezel* aktualny = poczatek;
+
+        while (aktualny->nastepny->nastepny != nullptr)
+        {
+            aktualny = aktualny->nastepny;
+        }
+
+        Wezel* tmp = aktualny->nastepny;
+        aktualny->nastepny = nullptr;
+        delete tmp;
+        
+    }
+
+    void usunZPoczatku(){
+        Wezel* tmp = poczatek;
+        poczatek = poczatek->nastepny;
+        delete(tmp);
+
+        if(poczatek!=nullptr) poczatek->poprzedni = nullptr;
     }
 
     void wstawNa(int indeks, int val){
